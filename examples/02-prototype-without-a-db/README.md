@@ -79,7 +79,7 @@ in a demo, a CI pipeline, or a code review.
 
 ```bash
 git clone <this-repo>
-cd 02-prototype-without-a-db
+cd examples/02-prototype-without-a-db
 ./generate.sh
 ```
 

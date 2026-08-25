@@ -73,7 +73,7 @@ You need two databases: a source with data and an empty target.
 
 ```bash
 git clone <this-repo>
-cd 06-sync-staging
+cd examples/06-sync-staging
 SOURCE_DSN=... TARGET_DSN=... ./sync.sh
 ```
 

@@ -76,7 +76,7 @@ fixtures never reached.
 
 ```bash
 git clone <this-repo>
-cd 01-first-database
+cd examples/01-first-database
 ./generate.sh
 ```
 

@@ -67,7 +67,7 @@ under load.
 
 ```bash
 git clone <this-repo>
-cd 04-query-performance
+cd examples/04-query-performance
 ./generate.sh
 docker compose exec -T target psql -U weavori -d target -f queries/before.sql
 docker compose exec -T target psql -U weavori -d target -f queries/after.sql

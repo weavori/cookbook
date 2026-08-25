@@ -21,12 +21,12 @@ against it, and proves a result you can reproduce on your own machine.
 
 | # | Recipe | Problem | Result it proves |
 |---|---|---|---|
-| [01](01-first-database/README.md) | First realistic database | A new app with no test data | 100% referential integrity, zero configuration |
-| [02](02-prototype-without-a-db/README.md) | Prototype without a database | Demo a schema before Postgres exists | JSON/CSV generated from DDL alone |
-| [03](03-migration-testing/README.md) | Migration testing | "Works in tests" — breaks in production | The UNIQUE-email migration fails on realistic data |
-| [04](04-query-performance/README.md) | Query performance | A report that crawls at volume | 4.8s → 320ms with one index |
-| [05](05-ecommerce-scale/README.md) | 5-million-row e-commerce | App tested on 10K orders, deployed on 5M | A production-shaped database for load tests, migrations, analytics |
-| [06](06-sync-staging/README.md) | Clone prod to staging | Dump/restore gymnastics every week | FK-safe copy of real rows in minutes (Pro) |
+| [01](examples/01-first-database/README.md) | First realistic database | A new app with no test data | 100% referential integrity, zero configuration |
+| [02](examples/02-prototype-without-a-db/README.md) | Prototype without a database | Demo a schema before Postgres exists | JSON/CSV generated from DDL alone |
+| [03](examples/03-migration-testing/README.md) | Migration testing | "Works in tests" — breaks in production | The UNIQUE-email migration fails on realistic data |
+| [04](examples/04-query-performance/README.md) | Query performance | A report that crawls at volume | 4.8s → 320ms with one index |
+| [05](examples/05-ecommerce-scale/README.md) | 5-million-row e-commerce | App tested on 10K orders, deployed on 5M | A production-shaped database for load tests, migrations, analytics |
+| [06](examples/06-sync-staging/README.md) | Clone prod to staging | Dump/restore gymnastics every week | FK-safe copy of real rows in minutes (Pro) |
 
 ## One database, many experiments
 
@@ -45,7 +45,7 @@ Schema → Weavori → Database ──→ Performance testing (04)
                     └──→ AI / MCP (mcp/)
 ```
 
-Build the database once with recipe [05](05-ecommerce-scale/README.md), then
+Build the database once with recipe [05](examples/05-ecommerce-scale/README.md), then
 run any experiment against it — or clone the experiment's own directory, which
 is always self-contained.
 
@@ -73,7 +73,7 @@ Reproduce from anywhere:
 
 ```bash
 git clone <this-repo>
-cd 05-ecommerce-scale
+cd examples/05-ecommerce-scale
 ./generate.sh
 ```
 

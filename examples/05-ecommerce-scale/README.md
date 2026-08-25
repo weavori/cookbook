@@ -119,7 +119,7 @@ GROUP BY 1 ORDER BY 1;
 
 ```bash
 git clone <this-repo>
-cd 05-ecommerce-scale
+cd examples/05-ecommerce-scale
 ./generate.sh
 ```
 

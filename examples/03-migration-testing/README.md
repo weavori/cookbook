@@ -88,7 +88,7 @@ identifier (`username`). That discussion is exactly the one you want to have
 
 ```bash
 git clone <this-repo>
-cd 03-migration-testing
+cd examples/03-migration-testing
 ./generate.sh
 docker compose exec -T target psql -U weavori -d target -f migration.sql
 ```
