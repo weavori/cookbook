@@ -27,6 +27,10 @@ against it, and proves a result you can reproduce on your own machine.
 | [04](examples/04-query-performance/README.md) | Query performance | A report that crawls at volume | 4.8s → 320ms with one index |
 | [05](examples/05-ecommerce-scale/README.md) | 5-million-row e-commerce | App tested on 10K orders, deployed on 5M | A production-shaped database for load tests, migrations, analytics |
 | [06](examples/06-sync-staging/README.md) | Clone prod to staging | Dump/restore gymnastics every week | FK-safe copy of real rows in minutes (Pro) |
+| [07](examples/07-analytics-star-schema/README.md) | Analytics star schema | The dashboard works on 3 hand-written rows | Revenue rollups that actually join and aggregate |
+| [08](examples/08-privacy-safe-database/README.md) | Privacy-safe database | Staging must not contain real PII | PII-free by construction, with a queryable audit |
+| [09](examples/09-ci-ephemeral-database/README.md) | Ephemeral DB in CI | Fixtures prove nothing in pipelines | Fresh realistic data + assertions on every push |
+| [10](examples/10-full-text-search/README.md) | Full-text search at volume | Search quality needs a realistic corpus | 100k docs, GIN-indexed, relevance-ranked |
 
 ## One database, many experiments
 
@@ -38,9 +42,11 @@ whole showcase.
                     │
 Schema → Weavori → Database ──→ Performance testing (04)
                     │
-                    ├──→ Application testing
+                    ├──→ Application testing (01)
                     │
-                    ├──→ Analytics
+                    ├──→ Analytics (07)
+                    │
+                    ├──→ Search (10)
                     │
                     └──→ AI / MCP (mcp/)
 ```
@@ -68,6 +74,9 @@ weavori.yaml        # how the data should look (formulas, datasets)
 generate.sh         # one script: database up → Weavori → ready
 docker-compose.yml  # source + target Postgres on fixed ports (DB-backed recipes)
 ```
+
+Recipes may also ship `queries/*.sql` (the experiment's SQL), CSV datasets,
+or `.github/workflows/` — anything the experiment needs.
 
 Reproduce from anywhere:
 

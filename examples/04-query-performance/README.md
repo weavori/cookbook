@@ -40,13 +40,13 @@ points at a real order, every `orders.customer_id` at a real customer.
 ## 6. Use it — run the benchmark
 
 ```bash
-docker compose exec -T target psql -U weavori -d target -f queries/before.sql
+docker compose exec -T target psql -U weavori -d target < queries/before.sql
 ```
 
 Note the `Execution Time` line. Then create the indexes and repeat:
 
 ```bash
-docker compose exec -T target psql -U weavori -d target -f queries/after.sql
+docker compose exec -T target psql -U weavori -d target < queries/after.sql
 ```
 
 ## 7. Prove it
@@ -69,8 +69,8 @@ under load.
 git clone <this-repo>
 cd examples/04-query-performance
 ./generate.sh
-docker compose exec -T target psql -U weavori -d target -f queries/before.sql
-docker compose exec -T target psql -U weavori -d target -f queries/after.sql
+docker compose exec -T target psql -U weavori -d target < queries/before.sql
+docker compose exec -T target psql -U weavori -d target < queries/after.sql
 ```
 
 **Windows:** run the scripts via Git Bash or WSL (see the root README's

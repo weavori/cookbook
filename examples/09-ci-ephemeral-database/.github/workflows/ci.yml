@@ -1,0 +1,61 @@
+name: weavori-ci-demo
+
+on: [push]
+
+jobs:
+  generate-and-test:
+    runs-on: ubuntu-latest
+    services:
+      source:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: weavori
+          POSTGRES_PASSWORD: weavori
+          POSTGRES_DB: source
+        ports:
+          - "5433:5432"
+        volumes:
+          - ${{ github.workspace }}/schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+        options: >-
+          --health-cmd "pg_isready -U weavori -d source"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+      target:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: weavori
+          POSTGRES_PASSWORD: weavori
+          POSTGRES_DB: target
+        ports:
+          - "5434:5432"
+        options: >-
+          --health-cmd "pg_isready -U weavori -d target"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Weavori
+        run: curl -fsS https://weavori.com/install | bash
+
+      - name: Install psql
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends postgresql-client
+
+      - name: Generate synthetic data (CI mode — WEAVORI_API_KEY)
+        env:
+          WEAVORI_API_KEY: ${{ secrets.WEAVORI_API_KEY }}
+        run: |
+          weavori generate "postgres://weavori:weavori@localhost:5433/source" \
+            --target "postgres://weavori:weavori@localhost:5434/target" \
+            --rows 1000 --yes \
+            --formula 'email=lower(concat(first_name, ".", last_name, "@example.com"))'
+
+      - name: Run assertions
+        run: |
+          psql "postgres://weavori:weavori@localhost:5434/target" \
+            -v ON_ERROR_STOP=1 -f verify.sql

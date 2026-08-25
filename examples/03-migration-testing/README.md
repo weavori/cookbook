@@ -43,7 +43,7 @@ duplicates that hand-written fixtures never had.
 ## 6. Use it — run the migration
 
 ```bash
-docker compose exec -T target psql -U weavori -d target -f migration.sql
+docker compose exec -T target psql -U weavori -d target < migration.sql
 ```
 
 ## 7. Prove it
@@ -90,7 +90,7 @@ identifier (`username`). That discussion is exactly the one you want to have
 git clone <this-repo>
 cd examples/03-migration-testing
 ./generate.sh
-docker compose exec -T target psql -U weavori -d target -f migration.sql
+docker compose exec -T target psql -U weavori -d target < migration.sql
 ```
 
 **Windows:** run the scripts via Git Bash or WSL (see the root README's

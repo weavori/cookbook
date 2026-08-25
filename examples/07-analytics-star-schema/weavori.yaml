@@ -1,0 +1,26 @@
+# Recipe 07: how the data should look.
+# Product names and customer segments come from your own value sets;
+# emails and slugs are derived. Everything else is the semantic matcher.
+
+generate:
+  datasets:
+    products: products.csv
+    segments: segments.csv
+
+  tables:
+    categories:
+      columns:
+        slug:
+          formula: "lower(replace(name, ' ', '-'))"
+
+    products:
+      columns:
+        name:
+          dataset: products
+
+    customers:
+      columns:
+        segment:
+          dataset: segments
+        email:
+          formula: "lower(concat(first_name, '.', last_name, '@example.com'))"

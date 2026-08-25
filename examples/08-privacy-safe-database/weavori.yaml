@@ -1,0 +1,18 @@
+# Recipe 08: how the data should look.
+# Department names come from your value set; emails are derived from the
+# generated names (synthetic by construction — no real identity anywhere).
+
+generate:
+  datasets:
+    departments: departments.csv
+
+  tables:
+    departments:
+      columns:
+        name:
+          dataset: departments
+
+    employees:
+      columns:
+        email:
+          formula: "lower(concat(first_name, '.', last_name, '@example.com'))"

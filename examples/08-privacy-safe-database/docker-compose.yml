@@ -1,0 +1,20 @@
+services:
+  source:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: weavori
+      POSTGRES_PASSWORD: weavori
+      POSTGRES_DB: source
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+
+  target:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: weavori
+      POSTGRES_PASSWORD: weavori
+      POSTGRES_DB: target
+    ports:
+      - "5434:5432"
