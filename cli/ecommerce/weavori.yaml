@@ -1,0 +1,33 @@
+# Project config for the e-commerce example.
+# Loaded automatically when running weavori from this directory.
+
+generate:
+  # Register the shared CSV datasets (paths relative to this file).
+  datasets:
+    products: ../../datasets/products.csv
+    countries: ../../datasets/countries.csv
+
+  tables:
+    categories:
+      columns:
+        slug:
+          # Formula: "Apparel & Accessories" -> "apparel--accessories"
+          formula: "lower(replace(name, ' ', '-'))"
+
+    products:
+      columns:
+        sku:
+          # Dataset mapping is the highest-priority strategy — it overrides
+          # the matcher, FK, and distribution strategies.
+          dataset: products
+          dataset_column: sku
+        name:
+          dataset: products
+          dataset_column: name
+
+    customers:
+      columns:
+        country:
+          dataset: countries
+        email:
+          formula: "lower(concat(first_name, '.', last_name, '@example.com'))"
