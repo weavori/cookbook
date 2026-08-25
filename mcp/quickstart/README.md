@@ -7,7 +7,7 @@ want, and the assistant drives the same engine the CLI uses.
 
 - `weavori` installed and authenticated (`weavori login` or `WEAVORI_API_KEY`).
 - The MCP server wired into your assistant (see [mcp/README.md](../README.md)).
-- A source database with the [quickstart schema](../../cli/quickstart/schema.sql)
+- A source database with the [recipe 01 schema](../../01-first-database/schema.sql)
   applied, and an empty target database.
 
 ## The conversation

@@ -1,0 +1,8 @@
+# Recipe 04: how the data should look.
+
+generate:
+  tables:
+    customers:
+      columns:
+        email:
+          formula: "lower(concat(first_name, '.', last_name, '@example.com'))"

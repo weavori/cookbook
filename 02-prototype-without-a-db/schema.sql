@@ -1,5 +1,6 @@
--- DDL paste mode: generate from CREATE TABLE statements alone.
--- No source database is involved — Weavori parses the DDL and generates to stdout.
+-- Recipe 02: prototype without a database.
+-- Weavori parses these CREATE TABLE statements and generates to stdout —
+-- no Postgres involved.
 
 CREATE TABLE users (
   id            bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

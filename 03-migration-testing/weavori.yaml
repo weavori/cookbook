@@ -1,0 +1,11 @@
+# Recipe 03: how the data should look.
+# Emails are derived from first+last name — so common name collisions
+# (two "John Smith"s) produce duplicate emails, exactly like a real app
+# that doesn't enforce uniqueness.
+
+generate:
+  tables:
+    customers:
+      columns:
+        email:
+          formula: "lower(concat(first_name, '.', last_name, '@example.com'))"

@@ -1,5 +1,6 @@
--- Quickstart schema: a minimal two-table database with a foreign key.
--- Apply this to a source database, then let Weavori introspect it.
+-- Recipe 03: migration testing.
+-- The experiment: "make customer emails unique" works on hand-written test
+-- data, but realistic data has duplicate emails (two John Smiths).
 
 CREATE TABLE customers (
   id         bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -7,15 +8,12 @@ CREATE TABLE customers (
   last_name  text NOT NULL,
   email      text NOT NULL,
   country    text NOT NULL,
-  is_active  boolean NOT NULL DEFAULT true,
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
 CREATE TABLE orders (
   id          bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   customer_id bigint NOT NULL REFERENCES customers (id),
-  status      text NOT NULL CHECK (status IN ('pending', 'paid', 'shipped', 'cancelled')),
   total       numeric(10, 2) NOT NULL CHECK (total >= 0),
-  placed_at   timestamptz NOT NULL DEFAULT now(),
-  paid_at     timestamptz
+  placed_at   timestamptz NOT NULL DEFAULT now()
 );

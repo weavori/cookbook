@@ -18,6 +18,9 @@ estimates, generates, or syncs inside a conversation.
 Semantics are identical to the CLI: formulas, datasets, FK-aware generation,
 quota/license enforcement, and error codes all apply to MCP runs.
 
+Use it on any recipe database: introspect the recipe 01–05 schemas, then have
+an assistant generate, estimate, or doctor them in-conversation.
+
 ## Start it
 
 ```bash

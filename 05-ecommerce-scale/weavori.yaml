@@ -1,24 +1,21 @@
-# Project config for the e-commerce example.
-# Loaded automatically when running weavori from this directory.
+# Recipe 05: how the data should look.
+# Product SKUs/names and customer countries come from your own value sets;
+# emails and slugs are derived. Everything else is the semantic matcher.
 
 generate:
-  # Register the shared CSV datasets (paths relative to this file).
   datasets:
-    products: ../../datasets/products.csv
-    countries: ../../datasets/countries.csv
+    products: products.csv
+    countries: countries.csv
 
   tables:
     categories:
       columns:
         slug:
-          # Formula: "Apparel & Accessories" -> "apparel--accessories"
           formula: "lower(replace(name, ' ', '-'))"
 
     products:
       columns:
         sku:
-          # Dataset mapping is the highest-priority strategy — it overrides
-          # the matcher, FK, and distribution strategies.
           dataset: products
           dataset_column: sku
         name:
