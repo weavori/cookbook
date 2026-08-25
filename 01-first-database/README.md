@@ -84,6 +84,8 @@ Everything is in this directory: schema, config, compose file, script.
 
 **Notes**
 
+- **Windows:** run scripts via Git Bash or WSL (see the root README's
+  Platform support section).
 - `--rows N` is per table; per-table counts are set interactively in the
   preview (TTY only).
 - The schema cache makes repeat runs start in milliseconds.

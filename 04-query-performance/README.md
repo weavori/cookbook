@@ -73,6 +73,9 @@ docker compose exec -T target psql -U weavori -d target -f queries/before.sql
 docker compose exec -T target psql -U weavori -d target -f queries/after.sql
 ```
 
+**Windows:** run the scripts via Git Bash or WSL (see the root README's
+Platform support section).
+
 **Why this works**: a query's performance depends on *data volume and shape*,
 not on whether the data is real. A million-row replica with real FK
 relationships gives you the same query plans as production — before you ship.

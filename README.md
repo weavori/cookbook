@@ -85,6 +85,18 @@ cd 05-ecommerce-scale
 - Docker (recipes with `docker-compose.yml`) or a local PostgreSQL 14+.
 - A Pro license for `weavori sync` (recipe 06) and the MCP `sync` tool.
 
+## Platform support
+
+All recipes work on Linux, macOS, and Windows.
+
+- **Linux / macOS** — run `./generate.sh` directly (bash + Docker).
+- **Windows** — use **Git Bash** (ships with Git for Windows) or **WSL**;
+  the scripts are plain bash. Or run the commands from a recipe's README
+  manually in PowerShell — the underlying tools (`weavori`, `docker
+  compose`, `psql`) are all Windows-native.
+- Line endings are normalized by `.gitattributes`, so scripts never break on
+  CRLF checkouts.
+
 ## Contributing
 
 A good recipe is a good experiment:

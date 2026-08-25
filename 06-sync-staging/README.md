@@ -79,6 +79,8 @@ SOURCE_DSN=... TARGET_DSN=... ./sync.sh
 
 **Notes**
 
+- **Windows:** run `./sync.sh` via Git Bash or WSL — or call
+  `weavori sync $env:SOURCE_DSN --target $env:TARGET_DSN` in PowerShell.
 - `--mode insert` for maximum compatibility; `--batch N` tunes large tables.
 - Synced rows count against the monthly quota.
 - Circular FK dependencies are detected and warned about.

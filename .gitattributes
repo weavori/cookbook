@@ -1,0 +1,6 @@
+# Line endings: scripts must stay LF even on Windows checkouts,
+# or bash fails with CRLF errors.
+*.sh text eol=lf
+
+# Everything else: autodetect, store LF in the repo.
+* text=auto

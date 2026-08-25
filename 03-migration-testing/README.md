@@ -93,6 +93,9 @@ cd 03-migration-testing
 docker compose exec -T target psql -U weavori -d target -f migration.sql
 ```
 
+**Windows:** run the scripts via Git Bash or WSL (see the root README's
+Platform support section).
+
 **Why this works**: Weavori generates realistic names from real name
 distributions — collisions are a property of the *data*, not of the tool.
 Hand-written test data is an argument for your assumptions; realistic data is

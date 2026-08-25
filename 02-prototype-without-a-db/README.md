@@ -85,6 +85,8 @@ cd 02-prototype-without-a-db
 
 **Notes**
 
+- **Windows:** run `./generate.sh` via Git Bash or WSL — or copy the command
+  below into PowerShell directly (no scripts needed for this recipe).
 - Paste mode has no distribution sampling (no source database) — every other
   feature works identically: formulas, datasets, FK order, cross-column
   coherence.

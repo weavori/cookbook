@@ -128,6 +128,8 @@ script.
 
 **Notes**
 
+- **Windows:** run `./generate.sh` via Git Bash or WSL (see the root README's
+  Platform support section).
 - ~10 GB free disk at 5M rows/table; `ROWS=100000` needs far less.
 - Generation streams in constant memory; millions of rows do not require
   millions of buffers.
