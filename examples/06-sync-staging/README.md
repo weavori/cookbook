@@ -20,9 +20,11 @@ the target schema from it (`--create-tables`, default on).
 
 ## 3. How the data should look
 
-Identical to the source: this is a data-copy tool, not a masking pipeline.
-Sync copies values unmasked, in FK dependency order, so the target is
-referentially intact — the same guarantee generation provides.
+Identical to the source: by default this is a raw data-copy, not a masking
+step. Sync copies values unmasked, in FK dependency order, so the target is
+referentially intact — the same guarantee generation provides. To copy the
+same rows with PII scrubbed instead, add `--anonymize` (deterministic maps,
+FK-safe).
 
 ## 4. Run
 
@@ -84,4 +86,5 @@ SOURCE_DSN=... TARGET_DSN=... ./sync.sh
 - `--mode insert` for maximum compatibility; `--batch N` tunes large tables.
 - Synced rows count against the monthly quota.
 - Circular FK dependencies are detected and warned about.
-- For *masked* test data, use `weavori generate` (recipes 01–05) instead.
+- For *synthetic* test data (nothing real at all), use `weavori generate`
+  (recipes 01–05). To keep real rows but scrub PII, add `--anonymize`.
