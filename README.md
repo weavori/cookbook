@@ -1,8 +1,10 @@
 # Weavori Cookbook
 
 A **developer laboratory**. Every recipe starts from a real developer problem,
-builds a realistic PostgreSQL database with Weavori, runs an experiment
-against it, and proves a result you can reproduce on your own machine.
+builds a realistic PostgreSQL database with
+[Weavori](https://weavori.com), the zero-config PostgreSQL synthetic data CLI,
+runs an experiment against it, and proves a result you can reproduce on your
+own machine.
 
 ## The recipe loop
 
@@ -86,9 +88,20 @@ cd examples/05-ecommerce-scale
 ./generate.sh
 ```
 
+## Install the CLI
+
+No permanent install is needed: every recipe can call Weavori through `npx`.
+
+```bash
+npx --yes @weavori/cli version   # zero-install
+npm install -g @weavori/cli      # or put `weavori` on your PATH
+```
+
+Full instructions: [weavori.com/docs/getting-started/installation](https://weavori.com/docs/getting-started/installation).
+
 ## Requirements
 
-- Weavori CLI. Authentication is required for every command except `login`,
+- [Weavori CLI](https://weavori.com). Authentication is required for every command except `login`,
   `version`, `subscribe`, `logout` — run `weavori login` or set
   `WEAVORI_API_KEY`.
 - Docker (recipes with `docker-compose.yml`) or a local PostgreSQL 14+.
